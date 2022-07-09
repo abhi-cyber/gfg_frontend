@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -11,7 +13,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Hello</h1>
-      
+
+
+      <Link href="/api/auth/auth0">
+        <a onClick={e => {
+          e.preventDefault();
+          signIn('auth0');
+        }} className="rounded px-5 py-1 text-sm border-b-4 border-l-2 shadow-lg bg-black border-gray-900 text-white">
+          Login
+        </a>
+      </Link>
+
+
     </div>
   )
 }
